@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: democrm
+  namespace: argocd
+spec:
+  project: default 
+  
+  source:
+    repoURL: git@github.com:gru31318/protfolio-app.git
+    targetRevision: HEAD
+    path: dressify
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true

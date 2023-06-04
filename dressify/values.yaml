@@ -1,0 +1,42 @@
+tls:
+  enabled: true
+
+globl:
+  appName: dressify
+  namespace: default
+
+ingress:
+  enabled: true
+  host: appoclist.com
+  port: 80
+
+deployment:
+  replicaCount: 2
+  image: 644435390668.dkr.ecr.eu-west-2.amazonaws.com/nachman-registry
+  tag: dressify-v1.0.2
+  containerPort: 5000
+  reqCpu: "250m"
+  reqMem: "128Mi"
+  limCpu: "250m"
+  limMem: "128Mi"
+
+service:
+  type: ClusterIP
+  port: 80
+
+issuer:
+  name: letsencrypt-prod
+  mail: nhmnmlh@gamil.com
+
+mysql:
+  architecture: replicaset
+  persistence:
+    enabled: true
+  replicaCount: 3
+  auth:
+    rootUser: user
+    rootPassword: password
+  nameOverride: mongodb
+  fullNameOverride: mongodb
+
+

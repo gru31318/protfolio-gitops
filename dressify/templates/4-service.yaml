@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.globl.appName }}-svc
+  namespace: {{ .Values.globl.namespace }}
+spec:
+  type: {{ .Values.service.type }}
+  selector:
+    app: {{ .Values.globl.appName }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.deployment.containerPort }}
