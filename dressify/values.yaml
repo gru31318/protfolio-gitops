@@ -7,11 +7,11 @@ globl:
 
 ingress:
   enabled: true
-  host: appoclist.com
+  host: mycowsay.ddns.net
   port: 80
 
 deployment:
-  replicaCount: 2
+  replicaCount: 1
   image: 644435390668.dkr.ecr.eu-west-2.amazonaws.com/nachman-registry
   tag: dressify-v1.0.2
   containerPort: 5000
@@ -29,14 +29,15 @@ issuer:
   mail: nhmnmlh@gamil.com
 
 mysql:
-  architecture: replicaset
+  architecture: replication
   persistence:
     enabled: true
-  replicaCount: 3
+  replicaCount: 2
   auth:
-    rootUser: user
-    rootPassword: password
-  nameOverride: mongodb
-  fullNameOverride: mongodb
+    rootPassword: root
+    database: dressify
+    username: user
+    password: password
+    
 
 

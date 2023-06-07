@@ -7,7 +7,7 @@ spec:
   project: default 
   
   source:
-    repoURL: git@github.com:gru31318/democrm-v5.git
+    repoURL: git@github.com:gru31318/protfolio-gitops.git
     targetRevision: HEAD
     path: infra-apps
   destination:

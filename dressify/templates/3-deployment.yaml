@@ -20,6 +20,9 @@ spec:
         image: "{{ .Values.deployment.image }}:{{ .Values.deployment.tag }}"
         ports:
         - containerPort: {{ .Values.deployment.containerPort }}
+        envFrom:
+          - configMapRef:
+              name: {{ .Values.globl.appName }}-config
         resources:
           requests:
             cpu: {{ .Values.deployment.reqCpu }}

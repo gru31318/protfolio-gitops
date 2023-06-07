@@ -7,7 +7,7 @@ spec:
   project: default 
   
   source:
-    repoURL: git@github.com:gru31318/protfolio-app.git
+    repoURL: git@github.com:gru31318/protfolio-gitops.git
     targetRevision: HEAD
     path: dressify
   destination:
