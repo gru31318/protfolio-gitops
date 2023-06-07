@@ -28,8 +28,9 @@ issuer:
   name: letsencrypt-prod
   mail: nhmnmlh@gamil.com
 
+# dependencies vars
 mysql:
-  architecture: replication
+  architecture: replication 
   persistence:
     enabled: true
   replicaCount: 2
@@ -38,6 +39,9 @@ mysql:
     database: dressify
     username: user
     password: password
+
+cert-manager:
+  installCRDs: true
     
 
 

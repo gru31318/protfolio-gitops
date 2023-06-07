@@ -2,5 +2,11 @@ dependencies:
 - name: mysql
   repository: oci://registry-1.docker.io/bitnamicharts
   version: 9.10.1
-digest: sha256:cb4b8914d3cb2317aad662f76a89942257673df7b76073b7373db4d061a70a8b
-generated: "2023-06-07T12:03:59.405730045+03:00"
+- name: ingress-nginx
+  repository: https://kubernetes.github.io/ingress-nginx
+  version: 4.6.1
+- name: cert-manager
+  repository: https://charts.jetstack.io
+  version: v1.12.0
+digest: sha256:a9218b1612f83c94b69a1d36606e8441d4f16dbc8e26842a17463e562f8a2899
+generated: "2023-06-07T18:36:28.031863253+03:00"
