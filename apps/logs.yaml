@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: dressify
+  name: logs
   namespace: argocd
 spec:
   project: default 
@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: git@github.com:gru31318/protfolio-gitops.git
     targetRevision: HEAD
-    path: dressify
+    path: demo
   destination:
     server: https://kubernetes.default.svc
     namespace: default
