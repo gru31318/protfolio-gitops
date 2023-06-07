@@ -1,17 +1,15 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: dressify
+  name: ingress-controller
   namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default 
-  
+  project: default
+
   source:
-    repoURL: git@github.com:gru31318/protfolio-gitops.git
-    targetRevision: HEAD
-    path: dressify
+    chart: ingress-nginx
+    repoURL: 'https://kubernetes.github.io/ingress-nginx'
+    targetRevision: 4.6.1
   destination:
     server: https://kubernetes.default.svc
     namespace: default

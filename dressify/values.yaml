@@ -40,8 +40,8 @@ mysql:
     username: dressifyuser
     password: dressifypass
 
-cert-manager:
-  installCRDs: true
+# cert-manager:
+#   installCRDs: true
     
 
 
