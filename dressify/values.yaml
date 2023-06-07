@@ -37,8 +37,8 @@ mysql:
   auth:
     rootPassword: root
     database: dressify
-    username: user
-    password: password
+    username: dressifyuser
+    password: dressifypass
 
 cert-manager:
   installCRDs: true

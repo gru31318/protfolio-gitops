@@ -23,6 +23,9 @@ spec:
         envFrom:
           - configMapRef:
               name: {{ .Values.globl.appName }}-config
+        envFrom:
+          - secretRef:
+              name: mysql-secrets
         resources:
           requests:
             cpu: {{ .Values.deployment.reqCpu }}

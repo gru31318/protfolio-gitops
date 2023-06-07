@@ -5,6 +5,4 @@ metadata:
   namespace: {{ .Values.globl.namespace }}
 data:
   MYSQL_HOST: "{{ .Release.Name }}-mysql-primary-headless"
-  MYSQL_USER: user
-  MYSQL_PASSWORD: password
   MYSQL_DATABASE: dressify
