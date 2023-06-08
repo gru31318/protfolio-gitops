@@ -13,7 +13,7 @@ ingress:
 deployment:
   replicaCount: 1
   image: 644435390668.dkr.ecr.eu-west-2.amazonaws.com/nachman-registry
-  tag: dressify-v1.0.2
+  tag: dressify-v1.0.3
   containerPort: 5000
   reqCpu: "250m"
   reqMem: "128Mi"
@@ -35,10 +35,9 @@ mysql:
     enabled: true
   replicaCount: 2
   auth:
-    rootPassword: root
     database: dressify
     username: dressifyuser
-    password: dressifypass
+    existingSecret: "mysql-secrets"
 
 # cert-manager:
 #   installCRDs: true

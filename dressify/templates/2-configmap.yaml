@@ -4,5 +4,5 @@ metadata:
   name: {{ .Values.globl.appName }}-config
   namespace: {{ .Values.globl.namespace }}
 data:
-  MYSQL_HOST: "{{ .Release.Name }}-mysql-primary-headless"
-  MYSQL_DATABASE: dressify
+  mysql-host: "{{ .Release.Name }}-mysql-primary-headless"
+  mysql-database: dressify
