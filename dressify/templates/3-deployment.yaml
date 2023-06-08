@@ -23,7 +23,6 @@ spec:
         envFrom:
           - configMapRef:
               name: {{ .Values.globl.appName }}-config
-        envFrom:
           - secretRef:
               name: mysql-secrets
         resources:
