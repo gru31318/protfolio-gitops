@@ -35,10 +35,11 @@ mysql:
     enabled: true
   replicaCount: 2
   auth:
-    rootPassword: root
+    # rootPassword: root
     database: dressify
     username: dressifyuser
-    password: dressifypass
+    # password: dressifypass
+    existingSecret: "mysql-secrets"
 
 # cert-manager:
 #   installCRDs: true
