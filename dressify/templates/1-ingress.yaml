@@ -7,19 +7,14 @@ metadata:
 {{- if .Values.tls.enabled }}
   annotations:
     cert-manager.io/cluster-issuer: {{ .Values.issuer.name }}
-    # nginx.ingress.kubernetes.io/server-snippet: |
-    #                       location ~* ^/static/*$ {
-    #                         rewrite ^/static/(.*)$ https://${var.static_bucket}/static/$1 break;
-    #                         proxy_pass https://${var.static_bucket};
-    #                         proxy_set_header Host ${var.static_bucket};
-    #                       }
-    nginx.ingress.kubernetes.io/server-snippet: |
-                          location /static {
-                            rewrite ^/static/(.*)$ /static/$1 break;
-                            proxy_pass https://dressify-static.s3.amazonaws.com;
-                            proxy_set_header Host dressify-static.s3.amazonaws.com;
-                          }
 {{- end}}
+    nginx.ingress.kubernetes.io/server-snippet: |
+                location ~* ^/static/.*\.(css|img|js) {
+                  rewrite ^/(.*)$ https://dressify-static.s3.eu-west-2.amazonaws.com/$1 break;
+                  proxy_pass https://dressify-static.s3.eu-west-2.amazonaws.com$request_uri;
+                  proxy_set_header Host dressify-static-s3;
+                  add_header location_header "S3";
+                }
 spec:
   ingressClassName: nginx
   tls:
