@@ -9,7 +9,7 @@ metadata:
     cert-manager.io/cluster-issuer: {{ .Values.issuer.name }}
 {{- end}}
     nginx.ingress.kubernetes.io/server-snippet: |
-                 location /static/ {
+                location /static/ {
                   rewrite ^/(.*)$ https://dressify-static.s3.eu-west-2.amazonaws.com/$1 break;
                   proxy_pass https://dressify-static.s3.eu-west-2.amazonaws.com$request_uri;
                   proxy_set_header Host dressify-static-s3;
