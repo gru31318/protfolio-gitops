@@ -28,6 +28,8 @@ issuer:
   name: letsencrypt-prod
   mail: nhmnmlh@gamil.com
 
+static_bucket: dressify-static.s3.eu-west-2.amazonaws.com
+
 # dependencies vars
 mysql:
   architecture: replication 
