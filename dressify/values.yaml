@@ -10,7 +10,7 @@ ingress:
 deployment:
   replicaCount: 2
   image: 644435390668.dkr.ecr.eu-west-2.amazonaws.com/nachman-registry
-  tag: dressify-v1.0.8
+  tag: dressify-v1.0.9
   containerPort: 5000
   reqCpu: 250m
   reqMem: 128Mi
