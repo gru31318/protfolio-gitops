@@ -8,7 +8,7 @@ ingress:
   host: mycowsay.ddns.net
   port: 80
 deployment:
-  replicaCount: 1
+  replicaCount: 2
   image: 644435390668.dkr.ecr.eu-west-2.amazonaws.com/nachman-registry
   tag: dressify-v1.0.8
   containerPort: 5000
