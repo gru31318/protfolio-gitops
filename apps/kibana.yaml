@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kibana
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default 
+
+  source:
+    chart: kibana
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 10.4.2
+    helm:
+      values: |
+        elasticsearch:
+          hosts: 
+            - "elasticsearch.logs.svc.cluster.local"
+          port: 9200
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: logs
+    
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true

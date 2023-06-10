@@ -23,7 +23,7 @@ spec:
              failurePolicy: Ignore
   destination:
     server: https://kubernetes.default.svc
-    namespace: monit
+    namespace: mons
 
   syncPolicy:
     syncOptions:

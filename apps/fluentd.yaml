@@ -1,0 +1,68 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: fluentd
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+
+  source:
+    chart: fluentd
+    repoURL: https://fluent.github.io/helm-charts
+    targetRevision: 0.4.3
+    helm:
+      values: |
+        livenessProbe:
+        readinessProbe:
+        fileConfigs:
+          01_sources.conf: |-
+            <source>
+              @type tail
+              read_from_head true
+              tag dressify.logs
+              path /var/log/containers/dressify*default_dressify*.log
+              pos_file /var/log/containers.log.pos
+              exclude_path ["/var/log/containers/fluent*"]
+              <parse>
+                @type multi_format
+                <pattern>
+                  format regexp
+                  expression /^(?<time>[^ ]+) [^ ]+ (?<stream>[^ ]+) (?<log>.+)$/
+                  time_format %Y-%m-%dT%H:%M:%S.%NZ
+                </pattern>
+              </parse>
+            </source>
+          02_filters.conf: |-
+            <filter **>
+                @type parser
+                key_name log
+                <parse>
+                  @type regexp
+                  expression /user: (?<user>[^,]+), action: (?<action>[^,]+)(?:, item: (?<item>[^,]+), color: (?<color>[^,]+))?/                
+                  reserve_data false
+                  emit_invalid_record_to_error false
+                </parse>
+            </filter>
+          03_dispatch.conf: |-
+          04_outputs.conf: |-
+            <match **>
+              @type elasticsearch
+              host elasticsearch-master-hl
+              port 9200
+              scheme http
+              index_name dressify
+            </match>
+
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: logs
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
