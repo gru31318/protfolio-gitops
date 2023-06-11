@@ -5,7 +5,7 @@ globl:
   namespace: default
 ingress:
   enabled: true
-  host: mycowsay.ddns.net
+  host: dressify.ddns.net
   port: 80
 deployment:
   replicaCount: 2
