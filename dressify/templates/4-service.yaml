@@ -3,6 +3,8 @@ kind: Service
 metadata:
   name: {{ .Values.globl.appName }}-svc
   namespace: {{ .Values.globl.namespace }}
+  labels:
+    app: {{ .Values.globl.appName }}
 spec:
   type: {{ .Values.service.type }}
   selector:
