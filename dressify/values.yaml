@@ -27,7 +27,7 @@ mysql:
   architecture: replication
   persistence:
     enabled: true
-  replicaCount: 2
+  replicaCount: 1
   auth:
     database: dressify
     username: dressifyuser
