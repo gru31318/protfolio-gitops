@@ -8,7 +8,7 @@ ingress:
   host: dressify.ddns.net
   port: 80
 deployment:
-  replicaCount: 3
+  replicaCount: 2
   image: 644435390668.dkr.ecr.eu-west-2.amazonaws.com/nachman-registry
   tag: dressify-v1.1.2
   containerPort: 5000
@@ -27,7 +27,7 @@ mysql:
   architecture: replication
   persistence:
     enabled: true
-  replicaCount: 3
+  replicaCount: 2
   auth:
     database: dressify
     username: dressifyuser
