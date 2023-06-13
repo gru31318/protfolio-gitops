@@ -1,0 +1,13 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ .Values.globl.appName }}-monitor
+  labels:
+    app: dressify
+spec:
+  selector:
+    matchLabels:
+      app: dressify
+  endpoints:
+  - port: web
+    interval: 30s
