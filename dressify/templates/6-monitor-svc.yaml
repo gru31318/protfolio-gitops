@@ -3,11 +3,11 @@ kind: ServiceMonitor
 metadata:
   name: {{ .Values.globl.appName }}-monitor
   labels:
-    app: dressify
+    app: {{ .Values.globl.appName }}
 spec:
   selector:
     matchLabels:
-      app: dressify
+      app: {{ .Values.globl.appName }}
   endpoints:
   - port: web
     interval: 30s
