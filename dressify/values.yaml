@@ -32,3 +32,6 @@ mysql:
     database: dressify
     username: dressifyuser
     existingSecret: mysql-secrets
+unsecuredSecret:
+  enabled: false
+
